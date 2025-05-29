@@ -26,7 +26,6 @@ public partial class MainForm : Form
         
         processingText.Text = result.Value.ReceivedText;
         resultOutput.Text = result.Value.ResultText;
-        resultKey.Text = result.Value.Key;
     }
 
     private void Decode(object sender, EventArgs e)
@@ -41,8 +40,15 @@ public partial class MainForm : Form
         }
         processingText.Text = result.Value.ReceivedText;
         resultOutput.Text = result.Value.ResultText;
-        resultKey.Text = result.Value.Key;
         
+    }
+    
+    private void Clean(object sender, EventArgs e)
+    {
+        processingText.Text = "";
+        resultOutput.Text = "";
+        textInput.Text = "";
+        keyInput.Text = "";
     }
 
     private void Hack(object sender, EventArgs e)
@@ -56,6 +62,6 @@ public partial class MainForm : Form
         }
         resultOutput.Text = result.Value.ResultText; 
         processingText.Text = result.Value.ReceivedText;
-        resultKey.Text = result.Value.Key;
+        keyInput.Text = result.Value.Key;
     }
 }

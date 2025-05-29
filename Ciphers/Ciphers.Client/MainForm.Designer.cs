@@ -27,6 +27,7 @@ partial class MainForm
         encodeButton = new System.Windows.Forms.Button();
         decodeButton = new System.Windows.Forms.Button();
         hackButton = new System.Windows.Forms.Button();
+        cleanButton = new System.Windows.Forms.Button();
         textInput = new System.Windows.Forms.TextBox();
         textInputHeader = new System.Windows.Forms.Label();
         processingText = new System.Windows.Forms.TextBox();
@@ -35,8 +36,6 @@ partial class MainForm
         resultHeader = new System.Windows.Forms.Label();
         keyInput = new System.Windows.Forms.TextBox();
         keyHeader = new System.Windows.Forms.Label();
-        resultKey = new System.Windows.Forms.TextBox();
-        resultKeuHeader = new System.Windows.Forms.Label();
         SuspendLayout();
         // 
         // encodeButton
@@ -70,13 +69,26 @@ partial class MainForm
         hackButton.BackColor = System.Drawing.Color.FromArgb(((int)((byte)69)), ((int)((byte)162)), ((int)((byte)158)));
         hackButton.ForeColor = System.Drawing.Color.FromArgb(((int)((byte)31)), ((int)((byte)40)), ((int)((byte)51)));
         hackButton.Font = new System.Drawing.Font("Bahnschrift SemiBold", 10F);
-        hackButton.Location = new System.Drawing.Point(224, 576);
+        hackButton.Location = new System.Drawing.Point(107, 576);
         hackButton.Name = "hackButton";
         hackButton.Size = new System.Drawing.Size(129, 30);
         hackButton.TabIndex = 2;
         hackButton.Text = "Взломать";
         hackButton.UseVisualStyleBackColor = false;
         hackButton.Click += Hack;
+        // 
+        // cluanButton
+        // 
+        cleanButton.Location = new System.Drawing.Point(342, 576);
+        cleanButton.Name = "decodeButton";
+        cleanButton.BackColor = System.Drawing.Color.FromArgb(((int)((byte)197)), ((int)((byte)198)), ((int)((byte)199)));
+        cleanButton.ForeColor = System.Drawing.Color.FromArgb(((int)((byte)31)), ((int)((byte)40)), ((int)((byte)51)));
+        cleanButton.Font = new System.Drawing.Font("Bahnschrift SemiBold", 10F);
+        cleanButton.Size = new System.Drawing.Size(129, 30);
+        cleanButton.TabIndex = 1;
+        cleanButton.Text = "Очистить";
+        cleanButton.UseVisualStyleBackColor = true;
+        cleanButton.Click += Clean;
         // 
         // textInput
         // 
@@ -161,25 +173,7 @@ partial class MainForm
         keyHeader.Size = new System.Drawing.Size(225, 27);
         keyHeader.TabIndex = 10;
         keyHeader.Text = "Ключ";
-        // 
-        // resultKey
-        // 
-        resultKey.Font = new System.Drawing.Font("Bahnschrift SemiBold", 12F);
-        resultKey.Location = new System.Drawing.Point(573, 583);
-        resultKey.Name = "resultKey";
-        resultKey.ReadOnly = true;
-        resultKey.Size = new System.Drawing.Size(410, 23);
-        resultKey.TabIndex = 11;
-        // 
-        // resultKeuHeader
-        // 
-        resultKeuHeader.Font = new System.Drawing.Font("Bahnschrift SemiBold", 14F);
-        resultKeuHeader.ForeColor = System.Drawing.Color.FromArgb(((int)((byte)102)), ((int)((byte)252)), ((int)((byte)241)));
-        resultKeuHeader.Location = new System.Drawing.Point(573, 559);
-        resultKeuHeader.Name = "resultKeuHeader";
-        resultKeuHeader.Size = new System.Drawing.Size(225, 23);
-        resultKeuHeader.TabIndex = 12;
-        resultKeuHeader.Text = "Ключ";
+        
         // 
         // MainForm
         // 
@@ -187,8 +181,6 @@ partial class MainForm
         AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
         BackColor = System.Drawing.Color.FromArgb(((int)((byte)11)), ((int)((byte)12)), ((int)((byte)16)));
         ClientSize = new System.Drawing.Size(1016, 636);
-        Controls.Add(resultKeuHeader);
-        Controls.Add(resultKey);
         Controls.Add(keyHeader);
         Controls.Add(keyInput);
         Controls.Add(resultHeader);
@@ -200,16 +192,12 @@ partial class MainForm
         Controls.Add(hackButton);
         Controls.Add(decodeButton);
         Controls.Add(encodeButton);
+        Controls.Add(cleanButton);
         Text = "Шифр Виженера";
         ResumeLayout(false);
         PerformLayout();
     }
-
-    private System.Windows.Forms.Label resultKeuHeader;
-
-
-    private System.Windows.Forms.TextBox resultKey;
-
+    private System.Windows.Forms.Button cleanButton;
     private System.Windows.Forms.TextBox keyInput;
     private System.Windows.Forms.Label keyHeader;
 

@@ -23,6 +23,8 @@ public class Encoder : IEncoder<string>
     
     public Result<EncodeResult<string>> Encode(string text, string key)
     {
+        if (!CheckKey(key))
+            return Result.Failure<EncodeResult<string>>("Ключ должен состоять только из кириллицы");
         return ExceptionHandler<EncodeResult<string>>.Execute(() =>
         {
             text = ApplyProcessors(text);
@@ -47,6 +49,8 @@ public class Encoder : IEncoder<string>
     {
         return ExceptionHandler<EncodeResult<string>>.Execute(() =>
         {
+            if (!CheckKey(key))
+                return Result.Failure<EncodeResult<string>>("Ключ должен состоять только из кириллицы");
             text = ApplyProcessors(text);
             key = ApplyProcessors(key);
             if (string.IsNullOrEmpty(text))
@@ -57,7 +61,7 @@ public class Encoder : IEncoder<string>
             return new EncodeResult<string>
             {
                 ReceivedText = text,
-                ResultText = cipher.Decrypt(text, key).Value,
+                ResultText = ApplyResultProcessors(cipher.Decrypt(text, key).Value),
                 Key = key
             };
         });
@@ -94,5 +98,17 @@ public class Encoder : IEncoder<string>
         return resultProcessors.Aggregate(
             text,
             (current, processor) => processor.Process(current));
+    }
+
+    private bool CheckKey(string key)
+    {
+        foreach (var c in key)
+        {
+            if (!(c >= 'А' && c <= 'я') && c != 'ё' && c != 'Ё')
+            {
+                return false;
+            }
+        }
+        return true;
     }
 }
